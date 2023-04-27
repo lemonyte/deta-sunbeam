@@ -147,4 +147,24 @@ export type CreateKeyResponse = {
   name: string;
   created_at: string;
   value: string;
-}
+};
+
+export type Drive = {
+  name: string;
+  collection_id: string;
+  status: string;
+};
+
+export type Base = {
+  name: string;
+  collection_id: string;
+  status: string;
+};
+
+export type BasesResponse = {
+  bases: Base[];
+};
+
+export type DrivesResponse = {
+  drives: Drive[];
+};
