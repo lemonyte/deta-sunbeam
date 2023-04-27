@@ -9,6 +9,7 @@ async function main(): Promise<List> {
     builder: builder(),
     collections: collections(),
     manual: manual(),
+    legacy_cloud: legacyCloud(),
   };
 
   const canvas = await fetchSpace<CanvasResponse>("canvas?limit=999");
@@ -185,6 +186,25 @@ function manual(): Listitem {
         type: "copy",
         title: "Copy URL",
         text: "https://deta.space/manual",
+        key: ".",
+      },
+    ],
+  };
+}
+
+function legacyCloud(): Listitem {
+  return {
+    title: "Legacy Cloud",
+    actions: [
+      {
+        type: "open",
+        title: "Open in browser",
+        target: "https://deta.space/legacy",
+      },
+      {
+        type: "copy",
+        title: "Copy URL",
+        text: "https://deta.space/legacy",
         key: ".",
       },
     ],
