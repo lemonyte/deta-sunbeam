@@ -1,0 +1,19 @@
+{
+  "name": "deta-sunbeam",
+  "version": "1.0.0",
+  "description": "Sunbeam extension for Deta Space.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsc -p . && sunbeam run node ./dist/src/index.js",
+    "test": "npx tsc -p . && node ./dist/src/index.js"
+  },
+  "author": "Lemonyte",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "deta-space-client": "^1.1.0"
+  }
+}
