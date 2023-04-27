@@ -22,7 +22,7 @@ export const commands = {
   },
 };
 
-export function getInputObject<Type>(defaultValue?: any): Type {
+export function getInput<Type>(defaultValue?: any): Type {
   let input;
 
   try {

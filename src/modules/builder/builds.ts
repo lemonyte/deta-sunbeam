@@ -1,9 +1,9 @@
 import type { List, Listitem } from "sunbeam-types";
-import { fetchSpace, getInputObject } from "../../utils";
+import { fetchSpace, getInput } from "../../utils";
 import type { Project, Build, BuildsResponse } from "../../types";
 
 async function main(): Promise<List> {
-  const project = getInputObject<Project>();
+  const project = getInput<Project>();
   const data = await fetchSpace<BuildsResponse>(`builds?app_id=${project.id}`);
   const builds = data.builds.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 

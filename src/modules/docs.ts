@@ -1,9 +1,9 @@
 import type { List, Listitem } from "sunbeam-types";
-import { commands, fetchSpace, getInputObject } from "../utils";
+import { commands, fetchSpace, getInput } from "../utils";
 import type { SearchHit, SearchResponse, SearchResult } from "../types";
 
 async function main(): Promise<List> {
-  const data = await fetchResults(getInputObject<string>(""));
+  const data = await fetchResults(getInput<string>(""));
 
   return {
     type: "list",

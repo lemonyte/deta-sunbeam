@@ -1,9 +1,9 @@
 import type { List, Listitem } from "sunbeam-types";
-import { fetchSpace, getInputObject } from "../../utils";
+import { fetchSpace, getInput } from "../../utils";
 import type { Collection, Base, Drive, BasesResponse, DrivesResponse } from "../../types";
 
 async function main(): Promise<List> {
-  const collection = getInputObject<Collection>();
+  const collection = getInput<Collection>();
   const { bases } = await fetchSpace<BasesResponse>(`collections/${collection.id}/bases`);
   const { drives } = await fetchSpace<DrivesResponse>(`collections/${collection.id}/drives`);
 

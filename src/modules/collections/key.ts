@@ -1,8 +1,8 @@
-import { commands, getInputObject, postSpace } from "../../utils";
+import { commands, getInput, postSpace } from "../../utils";
 import type { Collection, CreateKeyResponse } from "../../types";
 
 async function main() {
-  const collection = getInputObject<Collection>();
+  const collection = getInput<Collection>();
 
   return {
     type: "form",
@@ -26,7 +26,7 @@ async function main() {
 }
 
 async function generate() {
-  const collection = getInputObject<Collection>();
+  const collection = getInput<Collection>();
   const name = process.argv.pop();
 
   if (!name) {
