@@ -1,7 +1,8 @@
+import type { List, Listitem } from "sunbeam-types";
 import { fetchSpace, getInputObject } from "../../utils";
 import type { Project, Release, ReleasesResponse } from "../../types";
 
-async function main() {
+async function main(): Promise<List> {
   const project = getInputObject<Project>();
   const data = await fetchSpace<ReleasesResponse>(`releases?app_id=${project.id}`);
   const releases = data.releases.sort((a, b) => new Date(b.released_at).getTime() - new Date(a.released_at).getTime());
@@ -23,7 +24,7 @@ async function main() {
   };
 }
 
-function release(release: Release) {
+function release(release: Release): Listitem {
   const accessories = [];
   if (release.latest) {
     accessories.push("Latest");
@@ -33,7 +34,7 @@ function release(release: Release) {
     accessories.push("Listed");
   }
 
-  accessories.push(new Date(release.released_at));
+  accessories.push(new Date(release.released_at).toString());
 
   return {
     title: release.name,

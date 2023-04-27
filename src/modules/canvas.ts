@@ -1,9 +1,10 @@
+import type { List, Listitem } from "sunbeam-types";
 import { commands, fetchSpace, getInstanceMap } from "../utils";
-import type { CanvasItem, CanvasResponse, Instance } from "../types";
+import type { CanvasResponse, Instance } from "../types";
 
-async function main() {
-  const systemApps: Record<string, object> = {
-    discovery: await discovery(),
+async function main(): Promise<List> {
+  const systemApps: Record<string, Listitem> = {
+    discovery: discovery(),
     docs: docs(),
     builder: builder(),
     collections: collections(),
@@ -12,19 +13,10 @@ async function main() {
 
   const canvas = await fetchSpace<CanvasResponse>("canvas?limit=999");
   const instanceMap = await getInstanceMap();
+  const items: Listitem[] = [];
 
-  function getInstance(item: CanvasItem) {
-    if (item.item_type === "system_app") {
-      return systemApps[item.item_id];
-    }
-
-    const i = instanceMap[item.item_id];
-
-    if (!i) {
-      return null;
-    }
-
-    return instance(i);
+  for (const item of canvas.items) {
+    items.push(item.item_type === "system_app" ? systemApps[item.item_id] : instance(instanceMap[item.item_id]));
   }
 
   return {
@@ -40,11 +32,11 @@ async function main() {
         },
       ],
     },
-    items: canvas.items.map((item) => getInstance(item)).filter((item) => item),
+    items,
   };
 }
 
-function instance(instance: Instance) {
+function instance(instance: Instance): Listitem {
   return {
     title: instance.release.app_name,
     id: instance.id,
@@ -76,7 +68,7 @@ function instance(instance: Instance) {
   };
 }
 
-async function discovery() {
+function discovery(): Listitem {
   return {
     title: "Discovery",
     actions: [
@@ -97,12 +89,12 @@ async function discovery() {
         title: "Copy URL",
         text: "https://deta.space/discovery",
         key: ".",
-      }
+      },
     ],
   };
 }
 
-function builder() {
+function builder(): Listitem {
   return {
     title: "Builder",
     actions: [
@@ -123,12 +115,12 @@ function builder() {
         title: "Copy URL",
         text: "https://deta.space/builder",
         key: ".",
-      }
+      },
     ],
   };
 }
 
-function collections() {
+function collections(): Listitem {
   return {
     title: "Collections",
     actions: [
@@ -149,12 +141,12 @@ function collections() {
         title: "Copy URL",
         text: "https://deta.space/collections",
         key: ".",
-      }
+      },
     ],
   };
 }
 
-function docs() {
+function docs(): Listitem {
   return {
     title: "Docs",
     actions: [
@@ -175,12 +167,12 @@ function docs() {
         title: "Copy URL",
         text: "https://deta.space/docs",
         key: ".",
-      }
+      },
     ],
   };
 }
 
-function manual() {
+function manual(): Listitem {
   return {
     title: "Manual",
     actions: [

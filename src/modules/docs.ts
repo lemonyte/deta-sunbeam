@@ -1,7 +1,8 @@
+import type { List, Listitem } from "sunbeam-types";
 import { commands, fetchSpace, getInputObject } from "../utils";
 import type { SearchHit, SearchResponse, SearchResult } from "../types";
 
-async function main() {
+async function main(): Promise<List> {
   const data = await fetchResults(getInputObject<string>(""));
 
   return {
@@ -44,7 +45,7 @@ async function main() {
   };
 }
 
-function searchResult(result: SearchResult) {
+function searchResult(result: SearchResult): Listitem {
   return {
     title: result.title,
     id: result.id,

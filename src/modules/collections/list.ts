@@ -1,7 +1,8 @@
+import type { List, Listitem } from "sunbeam-types";
 import { commands, fetchSpace } from "../../utils";
 import type { Collection, CollectionsResponse } from "../../types";
 
-async function main() {
+async function main(): Promise<List> {
   const data = await fetchSpace<CollectionsResponse>("collections");
 
   return {
@@ -21,14 +22,14 @@ async function main() {
   };
 }
 
-function collection(collection: Collection) {
+function collection(collection: Collection): Listitem {
   const accessories = [];
 
   if (collection.migrated) {
     accessories.push("Migrated");
   }
 
-  accessories.push(new Date(collection.created_at));
+  accessories.push(new Date(collection.created_at).toString());
 
   return {
     title: collection.name,

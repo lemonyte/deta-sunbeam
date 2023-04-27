@@ -1,7 +1,8 @@
+import type { Action, List, Listitem } from "sunbeam-types";
 import { fetchSpace } from "../utils";
 import type { Release, ReleasesResponse } from "../types";
 
-async function main() {
+async function main(): Promise<List> {
   const data = await fetchSpace<ReleasesResponse>("discovery/apps");
   const releases = data.releases.sort((a, b) => b.discovery.stats.total_installs - a.discovery.stats.total_installs);
 
@@ -22,8 +23,8 @@ async function main() {
   };
 }
 
-function release(release: Release) {
-  const actions: object[] = [
+function release(release: Release): Listitem {
+  const actions: Action[] = [
     {
       type: "open",
       title: "Open in Discovery",

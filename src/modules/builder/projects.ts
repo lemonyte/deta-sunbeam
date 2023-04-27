@@ -1,7 +1,8 @@
+import type { Action, List, Listitem } from "sunbeam-types";
 import { commands, fetchSpace, getInstanceMap } from "../../utils";
 import type { Instance, Project, ProjectsResponse } from "../../types";
 
-async function main() {
+async function main(): Promise<List> {
   const projects = await fetchSpace<ProjectsResponse>("apps");
   const instanceMap = await getInstanceMap();
 
@@ -22,8 +23,8 @@ async function main() {
   };
 }
 
-function project(project: Project, instance?: Instance) {
-  const actions: object[] = [
+function project(project: Project, instance?: Instance): Listitem {
+  const actions: Action[] = [
     {
       type: "open",
       title: "Open in Builder",

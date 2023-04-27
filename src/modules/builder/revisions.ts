@@ -1,7 +1,8 @@
+import type { List, Listitem } from "sunbeam-types";
 import { fetchSpace, getInputObject } from "../../utils";
 import type { Project, Revision, RevisionsResponse } from "../../types";
 
-async function main() {
+async function main(): Promise<List> {
   const project = getInputObject<Project>();
   const data = await fetchSpace<RevisionsResponse>(`apps/${project.id}/revisions`);
   const revisions = data.revisions.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
@@ -23,12 +24,12 @@ async function main() {
   };
 }
 
-function revision(revision: Revision) {
+function revision(revision: Revision): Listitem {
   return {
     title: revision.tag,
     id: revision.id,
     subtitle: revision.id,
-    accessories: [new Date(revision.created_at)],
+    accessories: [new Date(revision.created_at).toString()],
   };
 }
 
