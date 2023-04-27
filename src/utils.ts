@@ -24,6 +24,7 @@ export const commands = {
 
 export function getInputObject<Type>(defaultValue?: any): Type {
   let input;
+
   try {
     input = readFileSync(process.stdin.fd, { encoding: "utf-8" });
   } catch {
@@ -42,7 +43,11 @@ export function getInputObject<Type>(defaultValue?: any): Type {
 }
 
 export function getSpaceToken(): string {
-  return JSON.parse(readFileSync(`${homedir()}/.detaspace/space_tokens`, { encoding: "utf8" })).access_token;
+  try {
+    return JSON.parse(readFileSync(`${homedir()}/.detaspace/space_tokens`, { encoding: "utf-8" })).access_token;
+  } catch {
+    throw Error("Could not find or parse your Space token. Please install and authenticate the Space CLI.");
+  }
 }
 
 export function fetchSpace<Type>(endpoint: string) {
