@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import { homedir } from "os";
 import { SpaceClient } from "deta-space-client";
-import type { InstancesResponse, Instance } from "./types";
+import type { Instance } from "./types";
 
 const spaceClient = SpaceClient(getSpaceToken());
 
@@ -26,7 +26,7 @@ export function postSpace<Type>(endpoint: string, body: any) {
 }
 
 export async function getInstanceMap() {
-  const instances = (await fetchSpace<InstancesResponse>("instances")).instances;
+  const { instances } = await fetchSpace<{ instances: Instance[] }>("instances");
 
   return instances.reduce((acc, instance) => {
     acc[instance.id] = instance;

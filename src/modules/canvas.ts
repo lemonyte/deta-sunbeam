@@ -1,6 +1,6 @@
 import type { List, Listitem } from "sunbeam-types";
 import { command, fetchSpace, getInstanceMap } from "../utils";
-import type { CanvasResponse, Instance } from "../types";
+import type { CanvasItem, Instance } from "../types";
 
 export async function canvas(): Promise<List> {
   const systemApps: Record<string, Listitem> = {
@@ -12,7 +12,7 @@ export async function canvas(): Promise<List> {
     legacy_cloud: legacyCloud(),
   };
 
-  const canvas = await fetchSpace<CanvasResponse>("canvas?limit=999");
+  const canvas = await fetchSpace<{ items: CanvasItem[] }>("canvas?limit=999");
   const instanceMap = await getInstanceMap();
   const items: Listitem[] = [];
 

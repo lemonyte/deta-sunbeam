@@ -1,9 +1,9 @@
 import type { Action, List, Listitem } from "sunbeam-types";
 import { command, fetchSpace, getInstanceMap } from "../../utils";
-import type { Instance, Project, ProjectsResponse } from "../../types";
+import type { Instance, Project } from "../../types";
 
 export async function projects(): Promise<List> {
-  const projects = await fetchSpace<ProjectsResponse>("apps");
+  const { apps: projects } = await fetchSpace<{ apps: Project[] }>("apps");
   const instanceMap = await getInstanceMap();
 
   return {
@@ -19,7 +19,7 @@ export async function projects(): Promise<List> {
         },
       ],
     },
-    items: projects.apps.map((p) => project(p, instanceMap[p.id])),
+    items: projects.map((p) => project(p, instanceMap[p.id])),
   };
 }
 

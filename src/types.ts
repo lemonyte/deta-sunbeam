@@ -82,32 +82,27 @@ export type Collection = {
   migrated?: boolean;
 };
 
-export type InstancesResponse = {
-  instances: Instance[];
+export type Base = {
+  name: string;
+  collection_id: string;
+  status: string;
 };
 
-export type CanvasResponse = {
-  items: CanvasItem[];
+export type Drive = {
+  name: string;
+  collection_id: string;
+  status: string;
 };
 
-export type BuildsResponse = {
-  builds: Build[];
+export type CreateKeyResponse = {
+  name: string;
+  created_at: string;
+  value: string;
 };
 
-export type ProjectsResponse = {
-  apps: Project[];
-};
-
-export type RevisionsResponse = {
-  revisions: Revision[];
-};
-
-export type ReleasesResponse = {
-  releases: Release[];
-};
-
-export type CollectionsResponse = {
-  collections: Collection[];
+export type SearchResponse = {
+  hits: SearchHit[];
+  query: string;
 };
 
 export type SearchResult = {
@@ -136,35 +131,4 @@ export type SearchHit = {
 
   anchor: string;
   url: string;
-};
-
-export type SearchResponse = {
-  hits: SearchHit[];
-  query: string;
-};
-
-export type CreateKeyResponse = {
-  name: string;
-  created_at: string;
-  value: string;
-};
-
-export type Drive = {
-  name: string;
-  collection_id: string;
-  status: string;
-};
-
-export type Base = {
-  name: string;
-  collection_id: string;
-  status: string;
-};
-
-export type BasesResponse = {
-  bases: Base[];
-};
-
-export type DrivesResponse = {
-  drives: Drive[];
 };
