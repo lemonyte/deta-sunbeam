@@ -57,8 +57,16 @@ function collection(collection: Collection): Listitem {
       },
       {
         type: "run",
-        title: "Generate Data Key",
-        command: command("collections", "key", collection.id),
+        title: "Generate data key",
+        command: command("collections", "key", collection.id, "${input:name}"),
+        inputs: [
+          {
+            name: "name",
+            title: "Name",
+            type: "textfield",
+            placeholder: "key name",
+          },
+        ],
         key: "k",
         onSuccess: "push",
       },
