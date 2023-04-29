@@ -2,7 +2,7 @@ import type { Action, List, Listitem } from "sunbeam-types";
 import { fetchSpace } from "../utils";
 import type { Release, ReleasesResponse } from "../types";
 
-async function main(): Promise<List> {
+export async function discovery(): Promise<List> {
   const data = await fetchSpace<ReleasesResponse>("discovery/apps");
   const releases = data.releases.sort((a, b) => b.discovery.stats.total_installs - a.discovery.stats.total_installs);
 
@@ -74,7 +74,3 @@ function release(release: Release): Listitem {
     actions,
   };
 }
-
-main().then((output) => {
-  console.log(JSON.stringify(output));
-});

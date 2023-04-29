@@ -1,9 +1,13 @@
 import type { List, Listitem } from "sunbeam-types";
-import { fetchSpace, getInput } from "../../utils";
+import { fetchSpace } from "../../utils";
 import type { Project, Release, ReleasesResponse } from "../../types";
 
-async function main(): Promise<List> {
-  const project = getInput<Project>();
+export async function releases(args: string[]): Promise<List> {
+  if (args.length !== 1) {
+    throw new Error("Expected 1 argument.");
+  }
+
+  const project = await fetchSpace<Project>(`apps/${args[0]}`)
   const data = await fetchSpace<ReleasesResponse>(`releases?app_id=${project.id}`);
   const releases = data.releases.sort((a, b) => new Date(b.released_at).getTime() - new Date(a.released_at).getTime());
 
@@ -56,7 +60,3 @@ function release(release: Release): Listitem {
     ],
   };
 }
-
-main().then((output) => {
-  console.log(JSON.stringify(output));
-});

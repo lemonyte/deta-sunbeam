@@ -1,8 +1,10 @@
-import { commands, getInput, postSpace } from "../../utils";
+import { command, fetchSpace, postSpace } from "../../utils";
 import type { Collection, CreateKeyResponse } from "../../types";
 
-async function main() {
-  const collection = getInput<Collection>();
+export async function key(args: string[]) {
+  const collection = await fetchSpace<Collection>(`collections/${args[0]}`);
+  console.log(collection); // temp
+  generate(args); // temp
 
   return {
     type: "form",
@@ -10,10 +12,7 @@ async function main() {
     submitAction: {
       type: "run",
       title: "Generate key",
-      command: {
-        args: commands.collections.key.split(" ").concat("generate", "${input:name}"),
-        input: JSON.stringify(collection),
-      },
+      command: command("collections", "key", "generate", "${input:name}"),
       inputs: {
         name: "name",
         title: "Name",
@@ -25,8 +24,8 @@ async function main() {
   };
 }
 
-async function generate() {
-  const collection = getInput<Collection>();
+async function generate(args: string[]) {
+  const collection = await fetchSpace<Collection>(`collections/${args[0]}`);
   const name = process.argv.pop();
 
   if (!name) {
@@ -49,10 +48,7 @@ async function generate() {
     actions.push({
       type: "run",
       title: "Retry",
-      command: {
-        args: commands.collections.key.split(" "),
-        input: JSON.stringify(collection),
-      },
+      command: command("collections", "key"),
       onSuccess: "push",
     });
   }
@@ -67,12 +63,12 @@ async function generate() {
 
 // console.log(process.argv);
 
-if (process.argv[process.argv.length - 2] === "generate") {
-  generate().then((output) => {
-    console.log(JSON.stringify(output));
-  });
-} else {
-  main().then((output) => {
-    console.log(JSON.stringify(output));
-  });
-}
+// if (process.argv[process.argv.length - 2] === "generate") {
+//   generate().then((output) => {
+//     console.log(JSON.stringify(output));
+//   });
+// } else {
+//   main().then((output) => {
+//     console.log(JSON.stringify(output));
+//   });
+// }

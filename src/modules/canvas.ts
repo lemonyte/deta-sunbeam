@@ -1,8 +1,8 @@
 import type { List, Listitem } from "sunbeam-types";
-import { commands, fetchSpace, getInstanceMap } from "../utils";
+import { command, fetchSpace, getInstanceMap } from "../utils";
 import type { CanvasResponse, Instance } from "../types";
 
-async function main(): Promise<List> {
+export async function canvas(): Promise<List> {
   const systemApps: Record<string, Listitem> = {
     discovery: discovery(),
     docs: docs(),
@@ -76,7 +76,7 @@ function discovery(): Listitem {
       {
         type: "run",
         title: "Search Discovery",
-        command: commands.discovery,
+        command: command("discovery"),
         onSuccess: "push",
       },
       {
@@ -102,7 +102,7 @@ function builder(): Listitem {
       {
         type: "run",
         title: "View projects",
-        command: commands.builder.projects,
+        command: command("builder", "projects"),
         onSuccess: "push",
       },
       {
@@ -128,7 +128,7 @@ function collections(): Listitem {
       {
         type: "run",
         title: "Search Collections",
-        command: commands.collections.list,
+        command: command("collections"),
         onSuccess: "push",
       },
       {
@@ -154,7 +154,7 @@ function docs(): Listitem {
       {
         type: "run",
         title: "Search docs",
-        command: commands.docs,
+        command: command("docs"),
         onSuccess: "push",
       },
       {
@@ -210,7 +210,3 @@ function legacyCloud(): Listitem {
     ],
   };
 }
-
-main().then((output) => {
-  console.log(JSON.stringify(output));
-});

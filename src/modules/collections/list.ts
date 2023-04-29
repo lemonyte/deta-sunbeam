@@ -1,9 +1,9 @@
 import type { List, Listitem } from "sunbeam-types";
-import { commands, fetchSpace } from "../../utils";
-import type { Collection, CollectionsResponse } from "../../types";
+import { command, fetchSpace } from "../../utils";
+import type { Collection } from "../../types";
 
-async function main(): Promise<List> {
-  const data = await fetchSpace<CollectionsResponse>("collections");
+export async function list(): Promise<List> {
+  const { collections } = await fetchSpace<{ collections: Collection[] }>("collections");
 
   return {
     type: "list",
@@ -18,7 +18,7 @@ async function main(): Promise<List> {
         },
       ],
     },
-    items: data.collections.map((c) => collection(c)),
+    items: collections.map((c) => collection(c)),
   };
 }
 
@@ -40,10 +40,7 @@ function collection(collection: Collection): Listitem {
       {
         type: "run",
         title: "View Collection",
-        command: {
-          args: commands.collections.view.split(" "),
-          input: JSON.stringify(collection),
-        },
+        command: command("collections", "view", collection.id),
         onSuccess: "push",
       },
       {
@@ -61,17 +58,10 @@ function collection(collection: Collection): Listitem {
       {
         type: "run",
         title: "Generate Data Key",
-        command: {
-          args: commands.collections.key.split(" "),
-          input: JSON.stringify(collection),
-        },
+        command: command("collections", "key", collection.id),
         key: "k",
         onSuccess: "push",
       },
     ],
   };
 }
-
-main().then((output) => {
-  console.log(JSON.stringify(output));
-});

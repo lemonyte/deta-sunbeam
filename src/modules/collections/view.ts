@@ -1,11 +1,15 @@
 import type { List, Listitem } from "sunbeam-types";
-import { fetchSpace, getInput } from "../../utils";
-import type { Collection, Base, Drive, BasesResponse, DrivesResponse } from "../../types";
+import { fetchSpace } from "../../utils";
+import type { Collection, Base, Drive } from "../../types";
 
-async function main(): Promise<List> {
-  const collection = getInput<Collection>();
-  const { bases } = await fetchSpace<BasesResponse>(`collections/${collection.id}/bases`);
-  const { drives } = await fetchSpace<DrivesResponse>(`collections/${collection.id}/drives`);
+export async function view(args: string[]): Promise<List> {
+  if (args.length !== 1) {
+    throw new Error("Expected 1 argument.");
+  }
+
+  const collection = await fetchSpace<Collection>(`collections/${args[0]}`);
+  const { bases } = await fetchSpace<{ bases: Base[] }>(`collections/${collection.id}/bases`);
+  const { drives } = await fetchSpace<{ drives: Drive[] }>(`collections/${collection.id}/drives`);
 
   return {
     type: "list",
@@ -53,7 +57,3 @@ function drive(drive: Drive): Listitem {
     ],
   };
 }
-
-main().then((output) => {
-  console.log(JSON.stringify(output));
-});

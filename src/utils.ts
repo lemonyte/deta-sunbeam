@@ -5,41 +5,8 @@ import type { InstancesResponse, Instance } from "./types";
 
 const spaceClient = SpaceClient(getSpaceToken());
 
-export const commands = {
-  canvas: "node ./dist/src/modules/canvas.js",
-  discovery: "node ./dist/src/modules/discovery.js",
-  docs: "node ./dist/src/modules/docs.js",
-  collections: {
-    list: "node ./dist/src/modules/collections/list.js",
-    view: "node ./dist/src/modules/collections/view.js",
-    key: "node ./dist/src/modules/collections/key.js",
-  },
-  builder: {
-    projects: "node ./dist/src/modules/builder/projects.js",
-    builds: "node ./dist/src/modules/builder/builds.js",
-    revisions: "node ./dist/src/modules/builder/revisions.js",
-    releases: "node ./dist/src/modules/builder/releases.js",
-  },
-};
-
-export function getInput<Type>(defaultValue?: any): Type {
-  let input;
-
-  try {
-    input = readFileSync(process.stdin.fd, { encoding: "utf-8" });
-  } catch {
-    return (defaultValue !== undefined ? defaultValue : null) as Type;
-  }
-
-  if (input === null) {
-    return (defaultValue !== undefined ? defaultValue : null) as Type;
-  }
-
-  try {
-    return JSON.parse(input);
-  } catch {
-    return input as Type;
-  }
+export function command(...args: string[]): [string, ...string[]] {
+  return [process.argv[0], process.argv[1], ...args];
 }
 
 export function getSpaceToken(): string {

@@ -1,8 +1,8 @@
 import type { Action, List, Listitem } from "sunbeam-types";
-import { commands, fetchSpace, getInstanceMap } from "../../utils";
+import { command, fetchSpace, getInstanceMap } from "../../utils";
 import type { Instance, Project, ProjectsResponse } from "../../types";
 
-async function main(): Promise<List> {
+export async function projects(): Promise<List> {
   const projects = await fetchSpace<ProjectsResponse>("apps");
   const instanceMap = await getInstanceMap();
 
@@ -45,10 +45,7 @@ function project(project: Project, instance?: Instance): Listitem {
     type: "run",
     title: "View builds",
     key: "b",
-    command: {
-      args: commands.builder.builds.split(" "),
-      input: JSON.stringify(project),
-    },
+    command: command("builder", "builds", project.id),
     onSuccess: "push",
   });
 
@@ -56,10 +53,7 @@ function project(project: Project, instance?: Instance): Listitem {
     type: "run",
     title: "View revisions",
     key: "v",
-    command: {
-      args: commands.builder.revisions.split(" "),
-      input: JSON.stringify(project),
-    },
+    command: command("builder", "revisions", project.id),
     onSuccess: "push",
   });
 
@@ -67,10 +61,7 @@ function project(project: Project, instance?: Instance): Listitem {
     type: "run",
     title: "View releases",
     key: "l",
-    command: {
-      args: commands.builder.releases.split(" "),
-      input: JSON.stringify(project),
-    },
+    command: command("builder", "releases", project.id),
     onSuccess: "push",
   });
 
@@ -105,7 +96,3 @@ function project(project: Project, instance?: Instance): Listitem {
     actions,
   };
 }
-
-main().then((output) => {
-  console.log(JSON.stringify(output));
-});

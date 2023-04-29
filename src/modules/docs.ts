@@ -1,9 +1,9 @@
 import type { List, Listitem } from "sunbeam-types";
-import { commands, fetchSpace, getInput } from "../utils";
+import { command, fetchSpace } from "../utils";
 import type { SearchHit, SearchResponse, SearchResult } from "../types";
 
-async function main(): Promise<List> {
-  const data = await fetchResults(getInput<string>(""));
+export async function docs(args: string[]): Promise<List> {
+  const data = await fetchResults(args[0]);
 
   return {
     type: "list",
@@ -22,10 +22,7 @@ async function main(): Promise<List> {
               placeholder: "query",
             },
           ],
-          command: {
-            args: commands.docs.split(" "),
-            input: "${input:query}",
-          },
+          command: command("docs", "${input:query}"),
           onSuccess: "push",
         },
         {
@@ -105,7 +102,3 @@ async function fetchResults(query: string) {
 
   return results;
 }
-
-main().then((output) => {
-  console.log(JSON.stringify(output));
-});
