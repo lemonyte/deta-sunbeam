@@ -34,5 +34,12 @@ function revision(revision: Revision): Listitem {
     id: revision.id,
     subtitle: revision.id,
     accessories: [new Date(revision.created_at).toString()],
+    actions: [
+      {
+        type: "copy",
+        title: "Copy tag",
+        text: revision.tag,
+      },
+    ],
   };
 }

@@ -34,5 +34,12 @@ function build(build: Build): Listitem {
     id: build.id,
     subtitle: build.id,
     accessories: [build.status, new Date(build.created_at).toString()],
+    actions: [
+      {
+        type: "copy",
+        title: "Copy tag",
+        text: build.tag,
+      },
+    ],
   };
 }
