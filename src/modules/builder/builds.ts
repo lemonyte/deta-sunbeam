@@ -1,13 +1,15 @@
 import type { List, Listitem } from "sunbeam-types";
-import { fetchSpace } from "../../utils";
+import { fetchSpace, getSpaceAppID } from "../../utils";
 import type { Project, Build } from "../../types";
 
 export async function builds(args: string[]): Promise<List> {
-  if (args.length !== 1) {
-    throw new Error("Expected 1 argument.");
+  const id = args[0] ?? getSpaceAppID();
+
+  if (!id) {
+    throw new Error("Expected 1 argument 'id'.");
   }
 
-  const project = await fetchSpace<Project>(`apps/${args[0]}`);
+  const project = await fetchSpace<Project>(`apps/${id}`);
   const data = await fetchSpace<{ builds: Build[] }>(`builds?app_id=${project.id}`);
   const builds = data.builds.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 

@@ -17,6 +17,14 @@ export function getSpaceToken(): string {
   }
 }
 
+export function getSpaceAppID(): string | null {
+  try {
+    return JSON.parse(readFileSync("./.space/meta", { encoding: "utf-8" })).id;
+  } catch {
+    return null;
+  }
+}
+
 export function fetchSpace<Type>(endpoint: string) {
   return spaceClient.get<Type>(endpoint);
 }

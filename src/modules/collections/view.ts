@@ -4,7 +4,7 @@ import type { Collection, Base, Drive } from "../../types";
 
 export async function view(args: string[]): Promise<List> {
   if (args.length !== 1) {
-    throw new Error("Expected 1 argument.");
+    throw new Error("Expected 1 argument 'id'.");
   }
 
   const collection = await fetchSpace<Collection>(`collections/${args[0]}`);
