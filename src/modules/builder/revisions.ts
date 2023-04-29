@@ -7,7 +7,7 @@ export async function revisions(args: string[]): Promise<List> {
     throw new Error("Expected 1 argument.");
   }
 
-  const project = await fetchSpace<Project>(`apps/${args[0]}`)
+  const project = await fetchSpace<Project>(`apps/${args[0]}`);
   const data = await fetchSpace<{ revisions: Revision[] }>(`apps/${project.id}/revisions`);
   const revisions = data.revisions.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
 

@@ -7,7 +7,7 @@ export async function builds(args: string[]): Promise<List> {
     throw new Error("Expected 1 argument.");
   }
 
-  const project = await fetchSpace<Project>(`apps/${args[0]}`)
+  const project = await fetchSpace<Project>(`apps/${args[0]}`);
   const data = await fetchSpace<{ builds: Build[] }>(`builds?app_id=${project.id}`);
   const builds = data.builds.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
