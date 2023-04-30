@@ -11,7 +11,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^18.15.11",
-    "sunbeam-types": "^0.7.0",
+    "sunbeam-types": "^0.8.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {

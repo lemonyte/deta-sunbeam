@@ -12,7 +12,7 @@ export async function docs(args: string[]): Promise<List> {
       text: "No results found.",
       actions: [
         {
-          type: "run",
+          type: "push",
           title: "Search",
           inputs: [
             {
@@ -23,7 +23,6 @@ export async function docs(args: string[]): Promise<List> {
             },
           ],
           command: command("docs", "${input:query}"),
-          onSuccess: "push",
         },
         {
           type: "reload",

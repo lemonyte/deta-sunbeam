@@ -74,10 +74,9 @@ function discovery(): Listitem {
     title: "Discovery",
     actions: [
       {
-        type: "run",
+        type: "push",
         title: "Search Discovery",
         command: command("discovery"),
-        onSuccess: "push",
       },
       {
         type: "open",
@@ -100,10 +99,9 @@ function builder(): Listitem {
     title: "Builder",
     actions: [
       {
-        type: "run",
+        type: "push",
         title: "View projects",
         command: command("builder", "projects"),
-        onSuccess: "push",
       },
       {
         type: "open",
@@ -126,10 +124,9 @@ function collections(): Listitem {
     title: "Collections",
     actions: [
       {
-        type: "run",
+        type: "push",
         title: "Search Collections",
         command: command("collections"),
-        onSuccess: "push",
       },
       {
         type: "open",
@@ -152,10 +149,9 @@ function docs(): Listitem {
     title: "Docs",
     actions: [
       {
-        type: "run",
+        type: "push",
         title: "Search docs",
         command: command("docs"),
-        onSuccess: "push",
       },
       {
         type: "open",

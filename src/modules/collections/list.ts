@@ -38,10 +38,9 @@ function collection(collection: Collection): Listitem {
     accessories,
     actions: [
       {
-        type: "run",
+        type: "push",
         title: "View Collection",
         command: command("collections", "view", collection.id),
-        onSuccess: "push",
       },
       {
         type: "open",
@@ -56,7 +55,7 @@ function collection(collection: Collection): Listitem {
         key: ".",
       },
       {
-        type: "run",
+        type: "push",
         title: "Generate data key",
         command: command("collections", "key", collection.id, "${input:name}"),
         inputs: [
@@ -68,7 +67,6 @@ function collection(collection: Collection): Listitem {
           },
         ],
         key: "k",
-        onSuccess: "push",
       },
     ],
   };

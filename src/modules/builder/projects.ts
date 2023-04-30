@@ -43,27 +43,24 @@ function project(project: Project, instance?: Instance): Listitem {
   }
 
   actions.push({
-    type: "run",
+    type: "push",
     title: "View builds",
     key: "b",
     command: command("builder", "builds", project.id),
-    onSuccess: "push",
   });
 
   actions.push({
-    type: "run",
+    type: "push",
     title: "View revisions",
     key: "v",
     command: command("builder", "revisions", project.id),
-    onSuccess: "push",
   });
 
   actions.push({
-    type: "run",
+    type: "push",
     title: "View releases",
     key: "l",
     command: command("builder", "releases", project.id),
-    onSuccess: "push",
   });
 
   actions.push({
