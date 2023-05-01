@@ -1,5 +1,5 @@
 import type { List, Listitem } from "sunbeam-types";
-import { command, fetchSpace } from "../utils";
+import { fetchSpace } from "../utils";
 import type { SearchHit, SearchResponse, SearchResult } from "../types";
 
 export async function docs(args: string[]): Promise<List> {
@@ -11,19 +11,6 @@ export async function docs(args: string[]): Promise<List> {
     emptyView: {
       text: "No results found.",
       actions: [
-        {
-          type: "push",
-          title: "Search",
-          inputs: [
-            {
-              name: "query",
-              title: "Search",
-              type: "textfield",
-              placeholder: "query",
-            },
-          ],
-          command: command("docs", "${input:query}"),
-        },
         {
           type: "reload",
           title: "Reload",

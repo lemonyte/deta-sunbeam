@@ -151,7 +151,15 @@ function docs(): Listitem {
       {
         type: "push",
         title: "Search docs",
-        command: command("docs"),
+        inputs: [
+          {
+            name: "query",
+            title: "Search",
+            type: "textfield",
+            placeholder: "query",
+          },
+        ],
+        command: command("docs", "${input:query}"),
       },
       {
         type: "open",
