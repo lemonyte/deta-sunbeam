@@ -1,6 +1,6 @@
 import type { List, Listitem } from "sunbeam-types";
-import { fetchSpace, getSpaceAppID } from "../../utils";
-import type { Project, Build } from "../../types";
+import { fetchSpace, getSpaceAppID } from "../../utils.ts";
+import type { Project, Build } from "../../types.ts";
 
 export async function builds(args: string[]): Promise<List> {
   const id = args[0] ?? getSpaceAppID();
@@ -10,8 +10,13 @@ export async function builds(args: string[]): Promise<List> {
   }
 
   const project = await fetchSpace<Project>(`apps/${id}`);
-  const data = await fetchSpace<{ builds: Build[] }>(`builds?app_id=${project.id}`);
-  const builds = data.builds.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+  const data = await fetchSpace<{ builds: Build[] }>(
+    `builds?app_id=${project.id}`
+  );
+  const builds = data.builds.sort(
+    (a, b) =>
+      new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+  );
 
   return {
     type: "list",

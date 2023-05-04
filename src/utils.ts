@@ -1,19 +1,25 @@
-import { readFileSync } from "fs";
-import { homedir } from "os";
+import { readFileSync } from "node:fs";
+import { homedir } from "node:os";
 import { SpaceClient } from "deta-space-client";
-import type { Instance } from "./types";
+import type { Instance } from "./types.ts";
 
 const spaceClient = SpaceClient(getSpaceToken());
 
 export function command(...args: string[]): [string, ...string[]] {
-  return [process.argv[0], process.argv[1], ...args];
+  return [Deno.args[0], Deno.args[1], ...args];
 }
 
 export function getSpaceToken(): string {
   try {
-    return JSON.parse(readFileSync(`${homedir()}/.detaspace/space_tokens`, { encoding: "utf-8" })).access_token;
+    return JSON.parse(
+      readFileSync(`${homedir()}/.detaspace/space_tokens`, {
+        encoding: "utf-8",
+      })
+    ).access_token;
   } catch {
-    throw Error("Could not find or parse your Space token. Please install and authenticate the Space CLI.");
+    throw Error(
+      "Could not find or parse your Space token. Please install and authenticate the Space CLI."
+    );
   }
 }
 
@@ -34,7 +40,9 @@ export function postSpace<Type>(endpoint: string, body: any) {
 }
 
 export async function getInstanceMap() {
-  const { instances } = await fetchSpace<{ instances: Instance[] }>("instances");
+  const { instances } = await fetchSpace<{ instances: Instance[] }>(
+    "instances"
+  );
 
   return instances.reduce((acc, instance) => {
     acc[instance.id] = instance;

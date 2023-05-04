@@ -1,6 +1,6 @@
 import type { List, Listitem } from "sunbeam-types";
-import { fetchSpace } from "../utils";
-import type { SearchHit, SearchResponse, SearchResult } from "../types";
+import { fetchSpace } from "../utils.ts";
+import type { SearchHit, SearchResponse, SearchResult } from "../types.ts";
 
 export async function docs(args: string[]): Promise<List> {
   const data = await fetchResults(args[0]);
@@ -56,7 +56,9 @@ async function fetchResults(query: string) {
     return results;
   }
 
-  const data = await fetchSpace<SearchResponse>(`indexes/docs/search?q=${encodeURIComponent(query)}`);
+  const data = await fetchSpace<SearchResponse>(
+    `indexes/docs/search?q=${encodeURIComponent(query)}`
+  );
 
   for (const hit of data.hits) {
     const parts: string[] = [];

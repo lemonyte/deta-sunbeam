@@ -1,8 +1,8 @@
-import { canvas } from "./modules/canvas";
-import { discovery } from "./modules/discovery";
-import { docs } from "./modules/docs";
-import { builder } from "./modules/builder";
-import { collections } from "./modules/collections";
+import { canvas } from "./modules/canvas.ts";
+import { discovery } from "./modules/discovery.ts";
+import { docs } from "./modules/docs.ts";
+import { builder } from "./modules/builder/index.ts";
+import { collections } from "./modules/collections/index.ts";
 
 async function index(args: string[]) {
   switch (args[0]) {
@@ -26,6 +26,6 @@ async function index(args: string[]) {
   }
 }
 
-index(process.argv.slice(2)).then((output) => {
+index(Deno.args.slice(2)).then((output) => {
   console.log(JSON.stringify(output));
 });

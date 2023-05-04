@@ -1,3 +1,3 @@
 #!/bin/bash
 
-node "$(dirname "$0")/dist/src/index.js" "$@"
+deno run -A src/index.ts

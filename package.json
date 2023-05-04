@@ -4,7 +4,7 @@
   "description": "Sunbeam extension for Deta Space.",
   "main": "index.js",
   "scripts": {
-    "start": "npx tsc -p . && sunbeam run node ./dist/src/index.js",
+    "start": "sunbeam run .",
     "test": "npx tsc -p . && node ./dist/src/index.js"
   },
   "author": "Lemonyte",
