@@ -13,7 +13,10 @@ export async function key(args: string[]): Promise<Detail> {
   let text;
 
   try {
-    const res = await postSpace<CreateKeyResponse>(`collections/${collection.id}/keys`, { name });
+    const res = await postSpace<CreateKeyResponse>(
+      `collections/${collection.id}/keys`,
+      { name },
+    );
     text = `Key '${name}' successfully generated.`;
     actions.push({
       type: "copy",

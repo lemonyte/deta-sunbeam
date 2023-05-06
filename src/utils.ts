@@ -10,9 +10,13 @@ export function command(...args: string[]): [string, ...string[]] {
 
 export async function getSpaceToken(): Promise<string> {
   try {
-    return JSON.parse(await Deno.readTextFile(`${homedir()}/.detaspace/space_tokens`)).access_token;
+    return JSON.parse(
+      await Deno.readTextFile(`${homedir()}/.detaspace/space_tokens`),
+    ).access_token;
   } catch {
-    throw Error("Could not find or parse your Space token. Please install and authenticate the Space CLI.");
+    throw Error(
+      "Could not find or parse your Space token. Please install and authenticate the Space CLI.",
+    );
   }
 }
 
@@ -33,7 +37,9 @@ export function postSpace<Type>(endpoint: string, body: unknown) {
 }
 
 export async function getInstanceMap() {
-  const { instances } = await fetchSpace<{ instances: Instance[] }>("instances");
+  const { instances } = await fetchSpace<{ instances: Instance[] }>(
+    "instances",
+  );
 
   return instances.reduce((acc, instance) => {
     acc[instance.id] = instance;

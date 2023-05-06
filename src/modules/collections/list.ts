@@ -3,7 +3,9 @@ import { command, fetchSpace } from "../../utils.ts";
 import type { Collection } from "../../types.ts";
 
 export async function list(): Promise<List> {
-  const { collections } = await fetchSpace<{ collections: Collection[] }>("collections");
+  const { collections } = await fetchSpace<{ collections: Collection[] }>(
+    "collections",
+  );
 
   return {
     type: "list",

@@ -17,7 +17,11 @@ export async function canvas(): Promise<List> {
   const items: Listitem[] = [];
 
   for (const item of canvas.items) {
-    items.push(item.item_type === "system_app" ? systemApps[item.item_id] : instance(instanceMap[item.item_id]));
+    items.push(
+      item.item_type === "system_app"
+        ? systemApps[item.item_id]
+        : instance(instanceMap[item.item_id]),
+    );
   }
 
   return {

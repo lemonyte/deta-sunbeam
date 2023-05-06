@@ -4,7 +4,9 @@ import type { Instance, Project } from "../../types.ts";
 
 export async function projects(): Promise<List> {
   const data = await fetchSpace<{ apps: Project[] }>("apps");
-  const projects = data.apps.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
+  const projects = data.apps.sort((a, b) =>
+    new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+  );
   const instanceMap = await getInstanceMap();
 
   return {

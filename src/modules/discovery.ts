@@ -4,7 +4,9 @@ import type { Release } from "../types.ts";
 
 export async function discovery(): Promise<List> {
   const data = await fetchSpace<{ releases: Release[] }>("discovery/apps");
-  const releases = data.releases.sort((a, b) => b.discovery.stats.total_installs - a.discovery.stats.total_installs);
+  const releases = data.releases.sort((a, b) =>
+    b.discovery.stats.total_installs - a.discovery.stats.total_installs
+  );
 
   return {
     type: "list",

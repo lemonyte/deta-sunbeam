@@ -19,7 +19,13 @@ export type CanvasItem = {
   data: null;
 };
 
-export type BuildStatus = "complete" | "pending" | "internal-error" | "failed" | "timed-out" | "running";
+export type BuildStatus =
+  | "complete"
+  | "pending"
+  | "internal-error"
+  | "failed"
+  | "timed-out"
+  | "running";
 
 export type Build = {
   id: string;

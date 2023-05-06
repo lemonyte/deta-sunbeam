@@ -56,7 +56,9 @@ async function fetchResults(query: string) {
     return results;
   }
 
-  const data = await fetchSpace<SearchResponse>(`indexes/docs/search?q=${encodeURIComponent(query)}`);
+  const data = await fetchSpace<SearchResponse>(
+    `indexes/docs/search?q=${encodeURIComponent(query)}`,
+  );
 
   for (const hit of data.hits) {
     const parts: string[] = [];

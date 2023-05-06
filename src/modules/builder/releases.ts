@@ -10,8 +10,12 @@ export async function releases(args: string[]): Promise<List> {
   }
 
   const project = await fetchSpace<Project>(`apps/${id}`);
-  const data = await fetchSpace<{ releases: Release[] }>(`releases?app_id=${project.id}`);
-  const releases = data.releases.sort((a, b) => new Date(b.released_at).getTime() - new Date(a.released_at).getTime());
+  const data = await fetchSpace<{ releases: Release[] }>(
+    `releases?app_id=${project.id}`,
+  );
+  const releases = data.releases.sort((a, b) =>
+    new Date(b.released_at).getTime() - new Date(a.released_at).getTime()
+  );
 
   return {
     type: "list",
