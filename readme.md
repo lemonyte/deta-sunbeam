@@ -23,7 +23,7 @@ go install github.com/pomdtr/sunbeam@latest
 Run the client:
 
 ```bash
-npm run start
+sunbeam run .
 ```
 
 ## License
