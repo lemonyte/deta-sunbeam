@@ -1,6 +1,6 @@
 import type { List, Listitem } from "sunbeam-types";
-import { fetchSpace } from "../../utils";
-import type { Collection, Base, Drive } from "../../types";
+import { fetchSpace } from "../../utils.ts";
+import type { Collection, Base, Drive } from "../../types.ts";
 
 export async function view(args: string[]): Promise<List> {
   if (args.length !== 1) {

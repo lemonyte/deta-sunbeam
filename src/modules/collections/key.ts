@@ -1,6 +1,6 @@
 import type { Action, Detail } from "sunbeam-types";
-import { fetchSpace, postSpace } from "../../utils";
-import type { Collection, CreateKeyResponse } from "../../types";
+import { fetchSpace, postSpace } from "../../utils.ts";
+import type { Collection, CreateKeyResponse } from "../../types.ts";
 
 export async function key(args: string[]): Promise<Detail> {
   if (args.length !== 2) {

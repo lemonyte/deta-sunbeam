@@ -1,6 +1,6 @@
 import type { List, Listitem } from "sunbeam-types";
-import { command, fetchSpace, getInstanceMap } from "../utils";
-import type { CanvasItem, Instance } from "../types";
+import { command, fetchSpace, getInstanceMap } from "../utils.ts";
+import type { CanvasItem, Instance } from "../types.ts";
 
 export async function canvas(): Promise<List> {
   const systemApps: Record<string, Listitem> = {

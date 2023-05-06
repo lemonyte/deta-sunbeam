@@ -1,6 +1,6 @@
-import { list } from "./list";
-import { view } from "./view";
-import { key } from "./key";
+import { list } from "./list.ts";
+import { view } from "./view.ts";
+import { key } from "./key.ts";
 
 export async function collections(args: string[]) {
   switch (args[0]) {

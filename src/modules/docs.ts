@@ -1,6 +1,6 @@
 import type { List, Listitem } from "sunbeam-types";
-import { fetchSpace } from "../utils";
-import type { SearchHit, SearchResponse, SearchResult } from "../types";
+import { fetchSpace } from "../utils.ts";
+import type { SearchHit, SearchResponse, SearchResult } from "../types.ts";
 
 export async function docs(args: string[]): Promise<List> {
   const data = await fetchResults(args[0]);

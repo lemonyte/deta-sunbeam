@@ -1,6 +1,6 @@
 import type { Action, List, Listitem } from "sunbeam-types";
-import { command, fetchSpace, getInstanceMap } from "../../utils";
-import type { Instance, Project } from "../../types";
+import { command, fetchSpace, getInstanceMap } from "../../utils.ts";
+import type { Instance, Project } from "../../types.ts";
 
 export async function projects(): Promise<List> {
   const data = await fetchSpace<{ apps: Project[] }>("apps");

@@ -1,6 +1,6 @@
 import type { List, Listitem } from "sunbeam-types";
-import { command, fetchSpace } from "../../utils";
-import type { Collection } from "../../types";
+import { command, fetchSpace } from "../../utils.ts";
+import type { Collection } from "../../types.ts";
 
 export async function list(): Promise<List> {
   const { collections } = await fetchSpace<{ collections: Collection[] }>("collections");

@@ -1,7 +1,7 @@
-import { projects } from "./projects";
-import { builds } from "./builds";
-import { revisions } from "./revisions";
-import { releases } from "./releases";
+import { projects } from "./projects.ts";
+import { builds } from "./builds.ts";
+import { revisions } from "./revisions.ts";
+import { releases } from "./releases.ts";
 
 export async function builder(args: string[]) {
   switch (args[0]) {

@@ -1,6 +1,6 @@
 import type { List, Listitem } from "sunbeam-types";
-import { fetchSpace, getSpaceAppID } from "../../utils";
-import type { Project, Build } from "../../types";
+import { fetchSpace, getSpaceAppID } from "../../utils.ts";
+import type { Project, Build } from "../../types.ts";
 
 export async function builds(args: string[]): Promise<List> {
   const id = args[0] ?? getSpaceAppID();
