@@ -1,6 +1,6 @@
 import type { Action, Detail } from "sunbeam-types";
-import { fetchSpace, postSpace } from "../../utils";
-import type { Collection, CreateKeyResponse } from "../../types";
+import { fetchSpace, postSpace } from "../../utils.ts";
+import type { Collection, CreateKeyResponse } from "../../types.ts";
 
 export async function key(args: string[]): Promise<Detail> {
   if (args.length !== 2) {
@@ -13,7 +13,10 @@ export async function key(args: string[]): Promise<Detail> {
   let text;
 
   try {
-    const res = await postSpace<CreateKeyResponse>(`collections/${collection.id}/keys`, { name });
+    const res = await postSpace<CreateKeyResponse>(
+      `collections/${collection.id}/keys`,
+      { name },
+    );
     text = `Key '${name}' successfully generated.`;
     actions.push({
       type: "copy",
