@@ -38,7 +38,7 @@ export function postSpace<Type>(endpoint: string, body: unknown) {
 
 export async function getInstanceMap() {
   const { instances } = await fetchSpace<{ instances: Instance[] }>(
-    "instances",
+    "instances?per_page=999",
   );
 
   return instances.reduce((acc, instance) => {
