@@ -57,7 +57,7 @@ async function fetchResults(query: string) {
   }
 
   const data = await fetchSpace<SearchResponse>(
-    `indexes/docs/search?q=${encodeURIComponent(query)}`,
+    `indexes/docs/search?q=${encodeURIComponent(query)}&limit=999`,
   );
 
   for (const hit of data.hits) {

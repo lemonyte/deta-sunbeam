@@ -11,7 +11,7 @@ export async function builds(args: string[]): Promise<List> {
 
   const project = await fetchSpace<Project>(`apps/${id}`);
   const data = await fetchSpace<{ builds: Build[] }>(
-    `builds?app_id=${project.id}`,
+    `builds?app_id=${project.id}&per_page=999`,
   );
   const builds = data.builds.sort((a, b) =>
     new Date(b.created_at).getTime() - new Date(a.created_at).getTime()

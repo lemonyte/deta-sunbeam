@@ -9,10 +9,10 @@ export async function view(args: string[]): Promise<List> {
 
   const collection = await fetchSpace<Collection>(`collections/${args[0]}`);
   const { bases } = await fetchSpace<{ bases: Base[] }>(
-    `collections/${collection.id}/bases`,
+    `collections/${collection.id}/bases?per_page=999`,
   );
   const { drives } = await fetchSpace<{ drives: Drive[] }>(
-    `collections/${collection.id}/drives`,
+    `collections/${collection.id}/drives?per_page=999`,
   );
 
   return {

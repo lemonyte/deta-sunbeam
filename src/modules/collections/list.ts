@@ -4,7 +4,7 @@ import type { Collection } from "../../types.ts";
 
 export async function list(): Promise<List> {
   const { collections } = await fetchSpace<{ collections: Collection[] }>(
-    "collections",
+    "collections?per_page=999",
   );
 
   return {
