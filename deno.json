@@ -1,6 +1,6 @@
 {
   "imports": {
-    "deta-space-client": "https://esm.sh/deta-space-client@1.1.0",
+    "deta-space-client": "https://esm.sh/deta-space-client@1.2.0",
     "sunbeam-types": "https://esm.sh/sunbeam-types@0.9.1"
   }
 }
