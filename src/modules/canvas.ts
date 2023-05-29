@@ -80,7 +80,7 @@ function discovery(): Listitem {
       {
         type: "push",
         title: "Search Discovery",
-        command: command("discovery"),
+        page: { command: command("discovery") },
       },
       {
         type: "open",
@@ -105,7 +105,7 @@ function builder(): Listitem {
       {
         type: "push",
         title: "View projects",
-        command: command("builder", "projects"),
+        page: { command: command("builder", "projects") },
       },
       {
         type: "open",
@@ -130,7 +130,7 @@ function collections(): Listitem {
       {
         type: "push",
         title: "Search Collections",
-        command: command("collections"),
+        page: { command: command("collections") },
       },
       {
         type: "open",
@@ -163,7 +163,7 @@ function docs(): Listitem {
             placeholder: "query",
           },
         ],
-        command: command("docs", "${input:query}"),
+        page: { command: command("docs", "${input:query}") },
       },
       {
         type: "open",

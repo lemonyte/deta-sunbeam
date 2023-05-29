@@ -48,21 +48,21 @@ function project(project: Project, instance?: Instance): Listitem {
     type: "push",
     title: "View builds",
     key: "b",
-    command: command("builder", "builds", project.id),
+    page: { command: command("builder", "builds", project.id) },
   });
 
   actions.push({
     type: "push",
     title: "View revisions",
     key: "v",
-    command: command("builder", "revisions", project.id),
+    page: { command: command("builder", "revisions", project.id) },
   });
 
   actions.push({
     type: "push",
     title: "View releases",
     key: "l",
-    command: command("builder", "releases", project.id),
+    page: { command: command("builder", "releases", project.id) },
   });
 
   actions.push({

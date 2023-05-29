@@ -42,7 +42,7 @@ function collection(collection: Collection): Listitem {
       {
         type: "push",
         title: "View Collection",
-        command: command("collections", "view", collection.id),
+        page: { command: command("collections", "view", collection.id) },
       },
       {
         type: "open",
@@ -59,7 +59,14 @@ function collection(collection: Collection): Listitem {
       {
         type: "push",
         title: "Generate data key",
-        command: command("collections", "key", collection.id, "${input:name}"),
+        page: {
+          command: command(
+            "collections",
+            "key",
+            collection.id,
+            "${input:name}",
+          ),
+        },
         inputs: [
           {
             name: "name",
