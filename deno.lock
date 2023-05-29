@@ -194,11 +194,11 @@
     "https://deno.land/std@0.177.0/streams/write_all.ts": "3b2e1ce44913f966348ce353d02fa5369e94115181037cd8b602510853ec3033",
     "https://deno.land/std@0.177.0/types.d.ts": "220ed56662a0bd393ba5d124aa6ae2ad36a00d2fcbc0e8666a65f4606aaa9784",
     "https://deno.land/x/xhr@0.3.0/mod.ts": "094aacd627fd9635cd942053bf8032b5223b909858fa9dc8ffa583752ff63b20",
-    "https://esm.sh/deta-space-client@1.1.0": "e55955dd1cf2376b6c5506f725f4fa6163e9ecee5d86be93abffd34bc82542d3",
-    "https://esm.sh/sunbeam-types@0.8.2": "fabf6997a3adf11e45d11e3c4d58d0634ab98f9d72f3116f3694123818ccd457",
-    "https://esm.sh/v119/cross-fetch@3.1.5/deno/cross-fetch.mjs": "be43e2fc88afad172ee461e33d50e39d89511300013157a10008506c52fdbfd6",
-    "https://esm.sh/v119/deta-space-client@1.1.0/deno/deta-space-client.mjs": "f3a865504f3b58d4b5be1051cb5634a3d982b7bb0026be96fb0af5115ccdfca8",
-    "https://esm.sh/v119/deta-space-client@1.1.0/dist/index.d.ts": "c79911eee2b3a349ec5f34413fd24604b5dfbd6952324c7d7cc0b1e08afa2633",
-    "https://esm.sh/v119/sunbeam-types@0.8.2/index.d.ts": "cd69082be515fa951066bdfbfa223d82be071f9c0acd99a4d215505e9bc99233"
+    "https://esm.sh/deta-space-client@1.1.0": "98eb554b43b06b006b20a3fb674e7111a66e1c68a03e0c111936ee1688750815",
+    "https://esm.sh/sunbeam-types@0.9.1": "fabf6997a3adf11e45d11e3c4d58d0634ab98f9d72f3116f3694123818ccd457",
+    "https://esm.sh/v124/cross-fetch@3.1.6/deno/cross-fetch.mjs": "d6cb828e4abb2641fb8f58a910adac08f46102db9cb209994e656c86111d90e8",
+    "https://esm.sh/v124/deta-space-client@1.1.0/deno/deta-space-client.mjs": "d5dc84f021c77d9caa4be9d15764fee948106f1b8a0d131e84a737c922d57091",
+    "https://esm.sh/v124/deta-space-client@1.1.0/dist/index.d.ts": "c79911eee2b3a349ec5f34413fd24604b5dfbd6952324c7d7cc0b1e08afa2633",
+    "https://esm.sh/v124/sunbeam-types@0.9.1/index.d.ts": "4efdfb036114bd39f005bc4087c948b405e6190edca03246864821f237cf96e9"
   }
 }
