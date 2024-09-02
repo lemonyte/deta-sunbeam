@@ -1,5 +1,8 @@
 # Deta Sunbeam
 
+> [!IMPORTANT]  
+> This project was created for Deta Space, a service which no longer exists as of October 17th, 2024.
+
 Deta client for Sunbeam.
 
 ## Installation
